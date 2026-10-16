@@ -200,6 +200,19 @@ p { max-width: 68ch; }
 @media (max-width: 900px) { .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 480px) { .skills { grid-template-columns: 1fr; } }
 
+/* certificates */
+.certs-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 28px; }
+.cert { margin: 0; }
+.cert a:has(img) { display: block; border-radius: 8px; }
+.cert img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: #fff; border: 1px solid var(--shot-edge); border-radius: 8px; padding: 6px; transition: border-color .15s; }
+.cert a:hover img { border-color: var(--heat); }
+.cert figcaption { margin-top: 10px; }
+.cert b { display: block; font-weight: 650; line-height: 1.3; }
+.cert span { display: block; color: var(--graphite); font-size: .92rem; margin-top: 2px; }
+.cert .verify-link { display: inline-block; margin-top: 4px; font-size: .92rem; }
+@media (max-width: 900px) { .certs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .certs-grid { grid-template-columns: 1fr; } }
+
 /* education */
 .edu { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 48px; }
 .edu .degree { margin: 6px 0 0; color: var(--graphite); }
@@ -236,6 +249,7 @@ footer { padding: 28px 0 40px; color: var(--graphite); font-size: .88rem; }
       <a href="#experience">Experience</a>
       <a href="#research">Research</a>
       <a href="#skills">Skills</a>
+      <a href="#certificates">Certificates</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -443,24 +457,81 @@ footer { padding: 28px 0 40px; color: var(--graphite); font-size: .88rem; }
   </section>
 
   <section id="education" aria-labelledby="edu-h">
-    <div class="wrap edu">
-      <div>
-        <h2 id="edu-h">Education</h2>
-        <h3 style="margin-top:24px">COMSATS University Islamabad</h3>
-        <p class="degree">Bachelor of GIS and Remote Sensing, Atmospheric Sciences and Meteorology<br>Oct 2022 – Jun 2026, CGPA 3.73</p>
+    <div class="wrap">
+      <h2 id="edu-h">Education</h2>
+      <h3 style="margin-top:24px">COMSATS University Islamabad</h3>
+      <p class="degree">Bachelor of GIS and Remote Sensing, Atmospheric Sciences and Meteorology<br>Oct 2022 – Jun 2026, CGPA 3.73</p>
+    </div>
+  </section>
+
+  <section id="certificates" aria-labelledby="cert-h">
+    <div class="wrap">
+      <h2 id="cert-h">Certificates</h2>
+      <p class="lede">Open any certificate to see the original PDF.</p>
+      <div class="certs-grid">
+        <figure class="cert">
+          <a href="assets/certificates/unesco-flood-hazard-exposure-mapping.pdf" target="_blank" rel="noopener" aria-label="Open the Flood Hazard and Exposure Mapping certificate (PDF)">
+            <img src="assets/certificates/unesco-flood-hazard-exposure-mapping.webp" loading="lazy" alt="Flood Hazard and Exposure Mapping certificate, UNESCO, with International Partnerships Austria and Flanders">
+          </a>
+          <figcaption>
+            <b>Flood Hazard and Exposure Mapping</b>
+            <span>UNESCO, with International Partnerships Austria and Flanders, Sep 2026</span>
+            <a class="verify-link" href="https://openlearning.unesco.org/certificates/3bda14d9d78f40928f95179bdd4e63bd" target="_blank" rel="noopener">Verify on UNESCO</a>
+          </figcaption>
+        </figure>
+        <figure class="cert">
+          <a href="assets/certificates/unitar-climate-adaptation-resilience.pdf" target="_blank" rel="noopener" aria-label="Open the Strengthening Climate Adaptation and Resilience certificate (PDF)">
+            <img src="assets/certificates/unitar-climate-adaptation-resilience.webp" loading="lazy" alt="Strengthening Climate Adaptation and Resilience certificate, UNITAR, UN CC:Learn and GIZ">
+          </a>
+          <figcaption>
+            <b>Strengthening Climate Adaptation and Resilience</b>
+            <span>UNITAR, UN CC:Learn and GIZ, Feb 2025</span>
+          </figcaption>
+        </figure>
+        <figure class="cert">
+          <a href="assets/certificates/unitar-climate-champion.pdf" target="_blank" rel="noopener" aria-label="Open the Becoming a Climate Champion certificate (PDF)">
+            <img src="assets/certificates/unitar-climate-champion.webp" loading="lazy" alt="Becoming a Climate Champion certificate, UNITAR and UN Climate Change">
+          </a>
+          <figcaption>
+            <b>Becoming a Climate Champion</b>
+            <span>UNITAR and UN Climate Change, Feb 2025</span>
+          </figcaption>
+        </figure>
+        <figure class="cert">
+          <a href="assets/certificates/microsoft-linkedin-generative-ai.pdf" target="_blank" rel="noopener" aria-label="Open the Career Essentials in Generative AI certificate (PDF)">
+            <img src="assets/certificates/microsoft-linkedin-generative-ai.webp" loading="lazy" alt="Career Essentials in Generative AI certificate, Microsoft and LinkedIn">
+          </a>
+          <figcaption>
+            <b>Career Essentials in Generative AI</b>
+            <span>Microsoft and LinkedIn, Feb 2025</span>
+          </figcaption>
+        </figure>
+        <figure class="cert">
+          <a href="assets/certificates/microsoft-linkedin-data-analysis.pdf" target="_blank" rel="noopener" aria-label="Open the Career Essentials in Data Analysis certificate (PDF)">
+            <img src="assets/certificates/microsoft-linkedin-data-analysis.webp" loading="lazy" alt="Career Essentials in Data Analysis certificate, Microsoft and LinkedIn">
+          </a>
+          <figcaption>
+            <b>Career Essentials in Data Analysis</b>
+            <span>Microsoft and LinkedIn, Mar 2025</span>
+          </figcaption>
+        </figure>
+        <figure class="cert">
+          <a href="assets/certificates/linkedin-intro-ai.pdf" target="_blank" rel="noopener" aria-label="Open the Introduction to Artificial Intelligence certificate (PDF)">
+            <img src="assets/certificates/linkedin-intro-ai.webp" loading="lazy" alt="Introduction to Artificial Intelligence certificate, LinkedIn Learning">
+          </a>
+          <figcaption>
+            <b>Introduction to Artificial Intelligence</b>
+            <span>LinkedIn Learning, Feb 2025</span>
+          </figcaption>
+        </figure>
       </div>
-      <div>
-        <h2>Certifications</h2>
-        <ul class="certs" style="margin-top:24px">
-          <li>Flood hazard and exposure mapping <span>UNESCO</span></li>
-          <li>Machine learning for Earth observation <span>EO College</span></li>
-          <li>Cartography, and spatial analysis <span>Esri</span></li>
-          <li>Climate change adaptation, climate champion <span>UNITAR</span></li>
-          <li>Generative AI, and data analysis <span>Microsoft and LinkedIn</span></li>
-          <li>Introduction to artificial intelligence <span>LinkedIn Learning</span></li>
-          <li>Ortho-rectification <span>Geo University</span></li>
-        </ul>
-      </div>
+      <h3 class="more-h">Also completed</h3>
+      <ul class="more">
+        <li>Cartography, Esri</li>
+        <li>Going Places with Spatial Analysis, Esri</li>
+        <li>Introduction to Machine Learning for Earth Observation, EO College</li>
+        <li>Ortho-rectification of Aerial Imagery through Orthophoto.io, Geo University</li>
+      </ul>
     </div>
   </section>
 
