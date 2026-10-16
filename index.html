@@ -209,8 +209,18 @@ p { max-width: 68ch; }
 @media (max-width: 480px) { .certs li { flex-direction: column; gap: 0; } .certs li span { text-align: left; } }
 @media (max-width: 760px) { .edu { grid-template-columns: 1fr; gap: 32px; } }
 
+/* more projects, training */
+.more-h { margin-top: 56px; margin-bottom: 12px; }
+.more { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; }
+.more li { padding: 10px 0; border-top: 1px solid var(--rule); color: var(--graphite); }
+.extra { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; margin-top: 32px; }
+.extra h3 { font-size: 1rem; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); }
+.extra ul { list-style: none; margin: 0; padding: 0; }
+.extra li { padding: 5px 0; color: var(--graphite); }
+@media (max-width: 760px) { .more { grid-template-columns: 1fr; } .extra { grid-template-columns: 1fr; gap: 28px; } }
+
 /* contact */
-.contact { border-top: 1px solid var(--rule); }
+.contact { border-top: 1px solid var(--rule); margin-top: 88px; }
 .contact h2 { font-size: clamp(2rem, 5vw, 3.6rem); }
 .contact .mail { font-size: clamp(1.1rem, 2.4vw, 1.5rem); font-weight: 600; word-break: break-word; }
 footer { padding: 28px 0 40px; color: var(--graphite); font-size: .88rem; }
@@ -321,6 +331,16 @@ footer { padding: 28px 0 40px; color: var(--graphite); font-size: .88rem; }
         </article>
       </div>
       <p class="note">These portals' code belongs to NDMA, so it is not public.</p>
+
+      <h3 class="more-h">More Geo-AI projects</h3>
+      <ul class="more">
+        <li>Flood Inundation Monitoring portal for NDMA, with an AI agent</li>
+        <li>Drought Monitoring portal for PMD, with an AI agent</li>
+        <li>Crop Water Requirement portal for NDMA</li>
+        <li>Coastal Hazard portal for NDMA</li>
+        <li>Real-estate site selection with machine learning</li>
+        <li>Network analysis for an Ohio county and for Germany, in Python</li>
+      </ul>
     </div>
   </section>
 
@@ -332,8 +352,8 @@ footer { padding: 28px 0 40px; color: var(--graphite); font-size: .88rem; }
         <li class="now">
           <time>Jul 2026 – now</time>
           <div>
-            <h3>Assistant Manager</h3>
-            <p class="org">National Disaster Management Authority (NDMA), Islamabad</p>
+            <h3>Employee, full-time</h3>
+            <p class="org">National Disaster Management Authority (NDMA) Pakistan, Islamabad</p>
             <p>Building the NDMA Cloud-based Early Warning System: forecasts, flood, drought, crop water and heatwave modules on one map, with a FastAPI backend and an AI briefing assistant. Bias-corrected the 7-day heatwave outlook on 111 PMD stations.</p>
           </div>
         </li>
@@ -438,6 +458,38 @@ footer { padding: 28px 0 40px; color: var(--graphite); font-size: .88rem; }
           <li>Introduction to artificial intelligence <span>LinkedIn Learning</span></li>
           <li>Ortho-rectification <span>Geo University</span></li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="training" aria-labelledby="train-h">
+    <div class="wrap">
+      <h2 id="train-h">Training and volunteering</h2>
+      <div class="extra">
+        <div>
+          <h3>Workshops</h3>
+          <ul>
+            <li>DSSAT crop modelling workshop</li>
+            <li>Disaster management training on early warning</li>
+            <li>AGRISAT satellite data workshop</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Volunteering</h3>
+          <ul>
+            <li>Pakistan Minerals Investment Forum 2025</li>
+            <li>Pakistan Learning Festival</li>
+            <li>Human Rights Commission of Pakistan (HRCP)</li>
+            <li>Federal Ministry of Education (DWE)</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Languages</h3>
+          <ul>
+            <li>English, C1 (spoken B2)</li>
+            <li>German, A1</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
