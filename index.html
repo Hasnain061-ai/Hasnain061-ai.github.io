@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muhammad Hasnain</title>
+<meta name="description" content="Muhammad Hasnain, GeoAI developer and meteorologist at NDMA Pakistan. Builds hazard early-warning portals from satellite and climate data.">
+<meta property="og:title" content="Muhammad Hasnain, GeoAI developer and meteorologist">
+<meta property="og:description" content="Hazard early-warning portals for Pakistan, built from satellite and climate data.">
+<meta property="og:image" content="https://hasnain061-ai.github.io/assets/hw-explorer.webp">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%23A8261F' stroke-width='3'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23102A3C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F2F5F6;
+  --paper-2: #E7EDF0;
+  --ink: #102A3C;
+  --graphite: #4A5D6B;
+  --rule: #CCD7DD;
+  --heat: #A8261F;
+  --monsoon: #1F5FA8;
+  --shot-edge: rgba(16, 42, 60, .14);
+  --contour-alpha: .55;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0D1B26;
+    --paper-2: #132634;
+    --ink: #E4ECF1;
+    --graphite: #9DB0BD;
+    --rule: #2A4050;
+    --heat: #F0776B;
+    --monsoon: #7FB2EE;
+    --shot-edge: rgba(228, 236, 241, .16);
+    --contour-alpha: .5;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0D1B26;
+  --paper-2: #132634;
+  --ink: #E4ECF1;
+  --graphite: #9DB0BD;
+  --rule: #2A4050;
+  --heat: #F0776B;
+  --monsoon: #7FB2EE;
+  --shot-edge: rgba(228, 236, 241, .16);
+  --contour-alpha: .5;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Archivo", system-ui, sans-serif;
+  font-variation-settings: "wdth" 100;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--monsoon); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+a:hover { color: var(--heat); }
+:focus-visible { outline: 2px solid var(--monsoon); outline-offset: 3px; border-radius: 2px; }
+img { max-width: 100%; display: block; }
+
+.wide { font-variation-settings: "wdth" 125; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+@media (max-width: 600px) { .wrap { padding: 0 16px; } }
+
+/* top bar */
+.bar { position: relative; z-index: 2; }
+.bar .wrap { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-top: 22px; padding-bottom: 22px; flex-wrap: wrap; }
+.bar .mark { font-weight: 700; font-variation-settings: "wdth" 125; color: var(--ink); text-decoration: none; letter-spacing: .01em; }
+.bar nav { display: flex; gap: 22px; flex-wrap: wrap; }
+.bar nav a { color: var(--graphite); text-decoration: none; font-size: .95rem; }
+.bar nav a:hover { color: var(--ink); }
+
+/* hero */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--rule); }
+.hero canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.35) 30%, #000 62%);
+          mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.35) 30%, #000 62%);
+}
+.hero .wrap { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; align-items: end; padding-top: 72px; padding-bottom: 88px; }
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.6rem, 7.4vw, 6.2rem);
+  line-height: .94;
+  font-weight: 800;
+  font-variation-settings: "wdth" 125;
+  letter-spacing: -.01em;
+}
+.hero h1 span { display: block; }
+.hero .role { margin: 28px 0 0; font-size: clamp(1.15rem, 2vw, 1.4rem); font-weight: 600; max-width: 34ch; line-height: 1.35; }
+.hero .line { margin: 14px 0 0; color: var(--graphite); max-width: 52ch; font-size: 1.08rem; }
+.links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; }
+.links a {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 16px; border: 1px solid var(--ink); border-radius: 999px;
+  color: var(--ink); text-decoration: none; font-weight: 600; font-size: .95rem;
+  background: var(--paper);
+}
+.links a.primary { background: var(--ink); color: var(--paper); }
+.links a:hover { border-color: var(--heat); color: var(--heat); }
+.links a.primary:hover { background: var(--heat); border-color: var(--heat); color: #fff; }
+.links svg { width: 16px; height: 16px; flex: none; }
+
+.station { margin: 0; text-align: center; }
+.station .ring {
+  position: relative; width: 230px; height: 230px; border-radius: 50%;
+  padding: 7px; border: 2px solid var(--heat); background: var(--paper);
+}
+.station .ring::before, .station .ring::after {
+  content: ""; position: absolute; background: var(--heat);
+}
+.station .ring::before { width: 2px; height: 22px; left: 50%; top: -24px; transform: translateX(-50%); }
+.station .ring::after { width: 22px; height: 2px; top: 50%; right: -24px; transform: translateY(-50%); }
+.station img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: 50% 18%; }
+.station figcaption { display: inline-block; margin-top: 12px; padding: 2px 10px; border-radius: 999px; background: var(--paper); font-size: .85rem; color: var(--graphite); }
+
+@media (max-width: 820px) {
+  .hero .wrap { grid-template-columns: 1fr; gap: 36px; padding-top: 32px; padding-bottom: 56px; }
+  .station { order: -1; text-align: left; }
+  .station .ring { width: 150px; height: 150px; }
+  .hero canvas { -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.25) 70%); mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.25) 70%); }
+}
+
+/* sections */
+section { padding: 88px 0 0; }
+section:last-of-type { padding-bottom: 96px; }
+h2 {
+  margin: 0 0 8px;
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  font-weight: 750;
+  font-variation-settings: "wdth" 125;
+  line-height: 1.05;
+}
+.lede { margin: 0 0 40px; color: var(--graphite); max-width: 60ch; }
+h3 { margin: 0; font-size: 1.2rem; font-weight: 700; line-height: 1.3; }
+p { max-width: 68ch; }
+
+/* featured project */
+.feature-head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 48px; align-items: start; margin-bottom: 36px; }
+.feature-head h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); font-variation-settings: "wdth" 115; font-weight: 750; }
+.feature-head .for { margin: 6px 0 0; color: var(--graphite); }
+.feature-head p.what { margin: 18px 0 0; font-size: 1.12rem; }
+.does { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.does li { padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.does b { display: block; font-weight: 650; }
+.does span { color: var(--graphite); font-size: .98rem; }
+.stack { margin-top: 18px; color: var(--graphite); font-size: .95rem; }
+@media (max-width: 820px) { .feature-head { grid-template-columns: 1fr; gap: 28px; } }
+
+.shot { margin: 0; }
+.shot img { border-radius: 10px; border: 1px solid var(--shot-edge); box-shadow: 0 18px 40px -22px rgba(16, 42, 60, .45); width: 100%; height: auto; aspect-ratio: 1376 / 784; object-fit: cover; background: var(--paper-2); }
+.shot figcaption { margin-top: 10px; font-size: .92rem; color: var(--graphite); max-width: 70ch; }
+.shot.big { margin-bottom: 40px; }
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+@media (max-width: 900px) { .gallery { grid-template-columns: 1fr; gap: 32px; } }
+.verify { margin-top: 36px; padding: 18px 22px; border-left: 3px solid var(--heat); background: var(--paper-2); border-radius: 0 8px 8px 0; max-width: 80ch; }
+.verify p { margin: 0; }
+
+/* in progress */
+.next { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
+.next article { border-top: 2px solid var(--ink); padding-top: 18px; }
+.next .state { display: inline-block; margin: 10px 0 0; font-size: .85rem; color: var(--heat); font-weight: 600; }
+.next p { margin: 10px 0 0; color: var(--graphite); }
+.note { margin-top: 28px; color: var(--graphite); font-size: .95rem; }
+@media (max-width: 760px) { .next { grid-template-columns: 1fr; gap: 32px; } }
+
+/* timeline */
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline li { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 32px; padding: 22px 0; border-top: 1px solid var(--rule); position: relative; }
+.timeline li:last-child { border-bottom: 1px solid var(--rule); }
+.timeline time { color: var(--graphite); font-size: .95rem; font-variant-numeric: tabular-nums; padding-top: 2px; }
+.timeline .now time { color: var(--heat); font-weight: 650; }
+.timeline .org { margin: 2px 0 0; color: var(--graphite); }
+.timeline p { margin: 8px 0 0; }
+@media (max-width: 640px) { .timeline li { grid-template-columns: 1fr; gap: 4px; } }
+
+/* research */
+.research { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; }
+.research li { padding: 16px 0; border-top: 1px solid var(--rule); }
+@media (max-width: 760px) { .research { grid-template-columns: 1fr; } }
+
+/* skills */
+.skills { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }
+.skills h3 { font-size: 1rem; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); }
+.skills ul { list-style: none; margin: 0; padding: 0; }
+.skills li { padding: 4px 0; color: var(--graphite); }
+@media (max-width: 900px) { .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .skills { grid-template-columns: 1fr; } }
+
+/* education */
+.edu { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 48px; }
+.edu .degree { margin: 6px 0 0; color: var(--graphite); }
+.certs { list-style: none; margin: 0; padding: 0; }
+.certs li { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid var(--rule); }
+.certs li span { color: var(--graphite); text-align: right; flex: none; }
+@media (max-width: 480px) { .certs li { flex-direction: column; gap: 0; } .certs li span { text-align: left; } }
+@media (max-width: 760px) { .edu { grid-template-columns: 1fr; gap: 32px; } }
+
+/* contact */
+.contact { border-top: 1px solid var(--rule); }
+.contact h2 { font-size: clamp(2rem, 5vw, 3.6rem); }
+.contact .mail { font-size: clamp(1.1rem, 2.4vw, 1.5rem); font-weight: 600; word-break: break-word; }
+footer { padding: 28px 0 40px; color: var(--graphite); font-size: .88rem; }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="#top">M. Hasnain</a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#research">Research</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <canvas id="field" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div>
+        <h1><span>Muhammad</span><span>Hasnain</span></h1>
+        <p class="role">GeoAI developer and meteorologist at the National Disaster Management Authority, Pakistan</p>
+        <p class="line">Reading the Earth from space and the sky from data, then turning it into elegant agentic systems.</p>
+        <div class="links">
+          <a class="primary" href="#work">See my work</a>
+          <a href="https://www.linkedin.com/in/muhammad-hasnain-87450033a/" rel="me">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1v5.45h-4v-4.83c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.91h-3.95v-11Z"/></svg>
+            LinkedIn</a>
+          <a href="https://github.com/Hasnain061-ai" rel="me">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+            GitHub</a>
+          <a href="mailto:ranahasnain061@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            Email</a>
+        </div>
+      </div>
+      <figure class="station">
+        <div class="ring"><img src="assets/photo.webp" width="480" height="480" alt="Muhammad Hasnain"></div>
+        <figcaption>Islamabad, 33.7° N 73.0° E</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <section id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <h2 id="work-h">Work</h2>
+      <p class="lede">I build web portals that turn satellite, station and forecast data into maps a disaster manager can act on.</p>
+
+      <div class="feature-head">
+        <div>
+          <h3>Heatwave Intelligence</h3>
+          <p class="for">A portal for NDMA Pakistan</p>
+          <p class="what">Shows how heat in Pakistan has changed since 1980, and which districts face a heatwave in the next seven days.</p>
+          <p class="stack">Built with Mapbox GL JS, plain JavaScript, a FastAPI backend and Python climate tooling.</p>
+        </div>
+        <ul class="does">
+          <li><b>45 years of station data on one map</b><span>PMD records from 1980 to 2024 on a 0.45° grid (about 50 km), with five heatwave measures at four percentile thresholds.</span></li>
+          <li><b>Compare periods and years</b><span>A swipe, side-by-side or difference view between any two periods or years.</span></li>
+          <li><b>Trends, rankings and records</b><span>A Mann-Kendall trend test with Sen's slope, national and station rankings, all-time records, and a chart for any place.</span></li>
+          <li><b>7-day heatwave outlook</b><span>The ECMWF forecast, bias-corrected to 111 PMD stations. A district goes to Alert or Severe when the forecast stays 4.5 °C or 6.5 °C above that date's normal for two days or more.</span></li>
+          <li><b>A chat assistant that answers with data</b><span>Questions in English or Roman Urdu. Every number it gives comes from a data tool, and it draws its answer on the map.</span></li>
+        </ul>
+      </div>
+
+      <figure class="shot big">
+        <img src="assets/hw-explorer.webp" width="1376" height="784" loading="lazy" alt="Heatwave Intelligence portal: a map of Pakistan coloured by hot days per year, 1980 to 2024, at the 85th percentile, darkest in Balochistan and the north.">
+        <figcaption>Hot days per year at the 85th percentile, 1980–2024. The highest counts sit in Balochistan and the far north.</figcaption>
+      </figure>
+      <div class="gallery">
+        <figure class="shot">
+          <img src="assets/hw-compare.webp" width="1376" height="784" loading="lazy" alt="Swipe comparison of hot days, 1980 to 1994 on the left and 2010 to 2024 on the right.">
+          <figcaption>Swipe compare: 1980–1994 on the left, 2010–2024 on the right.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/hw-outlook.webp" width="1376" height="784" loading="lazy" alt="The 7-day heatwave outlook, with Alert and Severe districts on the map and a daily bar chart of affected districts.">
+          <figcaption>The 7-day outlook, with Alert and Severe districts and a daily count.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/hw-agent.webp" width="1376" height="784" loading="lazy" alt="The chat assistant panel open next to the national trend analysis chart.">
+          <figcaption>The chat assistant beside the national trend analysis.</figcaption>
+        </figure>
+      </div>
+      <div class="verify">
+        <p><b>Checked against the record.</b> Tested on July and August 2026 against 111 PMD stations, the outlook caught 80% of observed heatwave days, and 23% of its calls were false alarms. The portal prints this beside the forecast, along with the months it has not been tested on yet.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="next" aria-labelledby="next-h">
+    <div class="wrap">
+      <h2 id="next-h">In progress</h2>
+      <p class="lede">Two larger portals I am still polishing. Screens will go up here when they are ready.</p>
+      <div class="next">
+        <article>
+          <h3>NDMA Cloud-based Early Warning System</h3>
+          <span class="state">In development at NDMA</span>
+          <p>One map for several hazards: forecasts from seven weather models, flood monitoring from Sentinel-1 radar and optical imagery, drought monitoring for 160 districts, a crop water outlook, and river discharge. Each module will become its own portal, as Heatwave Intelligence did.</p>
+        </article>
+        <article>
+          <h3>Pakistan Ocean Climate Portal</h3>
+          <span class="state">Being polished</span>
+          <p>Ocean acidification, warming, oxygen and fisheries in Pakistan's Exclusive Economic Zone, observed from 1982 to 2025 with an outlook to 2050. Every method follows the published literature.</p>
+        </article>
+      </div>
+      <p class="note">These portals' code belongs to NDMA, so it is not public.</p>
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="exp-h">
+    <div class="wrap">
+      <h2 id="exp-h">Experience</h2>
+      <p class="lede">From digitising land records to running climate models for national hazard warnings.</p>
+      <ol class="timeline" reversed>
+        <li class="now">
+          <time>Jul 2026 – now</time>
+          <div>
+            <h3>Assistant Manager</h3>
+            <p class="org">National Disaster Management Authority (NDMA), Islamabad</p>
+            <p>Building the NDMA Cloud-based Early Warning System: forecasts, flood, drought, crop water and heatwave modules on one map, with a FastAPI backend and an AI briefing assistant. Bias-corrected the 7-day heatwave outlook on 111 PMD stations.</p>
+          </div>
+        </li>
+        <li>
+          <time>Jan – Jun 2026</time>
+          <div>
+            <h3>Intern</h3>
+            <p class="org">Senate of Pakistan, Parliament House, Islamabad</p>
+            <p>Wrote a Python tool that replaced manual Excel payment processing, cutting the work from hours to seconds.</p>
+          </div>
+        </li>
+        <li class="now">
+          <time>Jul 2025 – now</time>
+          <div>
+            <h3>Image Annotator, part-time</h3>
+            <p class="org">TerraSkyAI Inc., remote</p>
+            <p>Labelling image data used to train and evaluate computer vision models.</p>
+          </div>
+        </li>
+        <li>
+          <time>2025, 3 months</time>
+          <div>
+            <h3>Meteorology Intern</h3>
+            <p class="org">Pakistan Meteorological Department</p>
+            <p>Built a Python model that automates drought mapping across Pakistan from several drought indices.</p>
+          </div>
+        </li>
+        <li>
+          <time>2024, 3 months</time>
+          <div>
+            <h3>Meteorology Intern</h3>
+            <p class="org">Pakistan Meteorological Department</p>
+            <p>Worked with satellite data for forecasts and extreme-weather reports, built an Android app that gives farmers crop guidance, and a rainfall prediction model in Python.</p>
+          </div>
+        </li>
+        <li>
+          <time>2023, 1 year</time>
+          <div>
+            <h3>GIS Analyst</h3>
+            <p class="org">Geo Mapping Solutions Pvt Ltd, Islamabad</p>
+            <p>Processed multispectral and hyperspectral imagery, digitised land parcels, georeferenced Mussavi sheets, and built geodatabases with topology checks and thematic maps.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="research" aria-labelledby="res-h">
+    <div class="wrap">
+      <h2 id="res-h">Research</h2>
+      <p class="lede">Five studies I have carried out on Pakistan's climate and land.</p>
+      <ul class="research">
+        <li>Localized changes in heatwave dynamics across Pakistan, and their link to large-scale climate patterns</li>
+        <li>Heatwaves triggering flash droughts across Pakistan, traced with remote-sensing indicators</li>
+        <li>Integrated drought mapping across Pakistan from several drought indices</li>
+        <li>Land use and land cover change in the Potohar region, and what drives it, from multi-temporal satellite data</li>
+        <li>A decision support system for farmers by agro-climatic region, delivered as an Android app</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-h">
+    <div class="wrap">
+      <h2 id="skills-h">Skills</h2>
+      <p class="lede">The tools I use day to day.</p>
+      <div class="skills">
+        <div>
+          <h3>Remote sensing and GIS</h3>
+          <ul><li>Google Earth Engine</li><li>ArcGIS Pro</li><li>QGIS</li><li>ENVI</li><li>Pix4Dmapper</li><li>Cartography</li></ul>
+        </div>
+        <div>
+          <h3>Climate and weather</h3>
+          <ul><li>GrADS</li><li>CDO</li><li>DSSAT crop modelling</li><li>Climate data analytics</li><li>Heatwave and drought indices</li></ul>
+        </div>
+        <div>
+          <h3>AI and machine learning</h3>
+          <ul><li>Agentic AI</li><li>Large language models</li><li>Machine learning</li><li>Roboflow</li><li>Data annotation</li></ul>
+        </div>
+        <div>
+          <h3>Software</h3>
+          <ul><li>Python</li><li>R</li><li>FastAPI</li><li>Leaflet and Mapbox GL JS</li><li>Full-stack web development</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" aria-labelledby="edu-h">
+    <div class="wrap edu">
+      <div>
+        <h2 id="edu-h">Education</h2>
+        <h3 style="margin-top:24px">COMSATS University Islamabad</h3>
+        <p class="degree">Bachelor of GIS and Remote Sensing, Atmospheric Sciences and Meteorology<br>Oct 2022 – Jun 2026, CGPA 3.73</p>
+      </div>
+      <div>
+        <h2>Certifications</h2>
+        <ul class="certs" style="margin-top:24px">
+          <li>Flood hazard and exposure mapping <span>UNESCO</span></li>
+          <li>Machine learning for Earth observation <span>EO College</span></li>
+          <li>Cartography, and spatial analysis <span>Esri</span></li>
+          <li>Climate change adaptation, climate champion <span>UNITAR</span></li>
+          <li>Generative AI, and data analysis <span>Microsoft and LinkedIn</span></li>
+          <li>Introduction to artificial intelligence <span>LinkedIn Learning</span></li>
+          <li>Ortho-rectification <span>Geo University</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <h2 id="contact-h">Get in touch</h2>
+      <p class="lede">Open to work on climate risk, early warning and GeoAI.</p>
+      <p><a class="mail" href="mailto:ranahasnain061@gmail.com">ranahasnain061@gmail.com</a></p>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/muhammad-hasnain-87450033a/">LinkedIn</a>
+        <a href="https://github.com/Hasnain061-ai">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Muhammad Hasnain, Islamabad, 2026.</div>
+</footer>
+
+<script>
+// Hero: a drifting temperature field drawn as isolines, the way a weather
+// chart draws one. Marching squares over a coarse grid; pauses off screen,
+// draws a single still frame when reduced motion is requested.
+(() => {
+  const cv = document.getElementById('field');
+  if (!cv || !cv.getContext) return;
+  const ctx = cv.getContext('2d');
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const CELL = 16, LEVELS = 11;
+  // cool-to-hot ramp, muted so it sits behind text
+  const RAMP = [[49, 102, 168], [96, 150, 196], [150, 186, 210], [214, 170, 120], [205, 112, 74], [168, 38, 31]];
+  const blobs = [
+    { x: .72, y: .38, r: .30, a: 1.0, sx: .021, sy: .017, p: 0 },
+    { x: .90, y: .78, r: .24, a: .85, sx: .016, sy: .023, p: 1.7 },
+    { x: .55, y: .85, r: .22, a: -.7, sx: .019, sy: .013, p: 3.1 },
+    { x: .98, y: .15, r: .20, a: -.55, sx: .014, sy: .02, p: 4.4 },
+    { x: .40, y: .30, r: .26, a: .45, sx: .012, sy: .018, p: 5.2 },
+  ];
+  let w = 0, h = 0, dpr = 1, raf = 0, visible = true, t0 = performance.now();
+
+  function size() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const r = cv.getBoundingClientRect();
+    w = r.width; h = r.height;
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function colour(f) {
+    const s = f * (RAMP.length - 1), i = Math.min(Math.floor(s), RAMP.length - 2), k = s - i;
+    const c = RAMP[i].map((v, j) => Math.round(v + (RAMP[i + 1][j] - v) * k));
+    return `rgba(${c[0]},${c[1]},${c[2]},${getComputedStyle(document.documentElement).getPropertyValue('--contour-alpha') || .55})`;
+  }
+  function field(t) {
+    const nx = Math.ceil(w / CELL) + 1, ny = Math.ceil(h / CELL) + 1, v = new Float32Array(nx * ny);
+    const S = Math.max(w, h);
+    const bs = blobs.map(b => ({
+      x: (b.x + .06 * Math.sin(t * b.sx + b.p)) * w,
+      y: (b.y + .08 * Math.cos(t * b.sy + b.p)) * h,
+      r2: (b.r * S) ** 2, a: b.a,
+    }));
+    for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) {
+      const x = i * CELL, y = j * CELL;
+      let s = .25 * Math.sin(x / S * 5 + t * .01) * Math.cos(y / S * 4);
+      for (const b of bs) { const dx = x - b.x, dy = y - b.y; s += b.a * Math.exp(-(dx * dx + dy * dy) / b.r2); }
+      v[j * nx + i] = s;
+    }
+    return { v, nx, ny };
+  }
+  function draw(t) {
+    const { v, nx, ny } = field(t);
+    ctx.clearRect(0, 0, w, h);
+    ctx.lineWidth = 1.1;
+    const lo = -.7, hi = 1.15;
+    for (let L = 0; L < LEVELS; L++) {
+      const f = L / (LEVELS - 1), iso = lo + (hi - lo) * f;
+      ctx.strokeStyle = colour(f);
+      ctx.lineWidth = L % 5 === 0 ? 1.8 : 1;
+      ctx.beginPath();
+      for (let j = 0; j < ny - 1; j++) for (let i = 0; i < nx - 1; i++) {
+        const a = v[j * nx + i], b = v[j * nx + i + 1], c = v[(j + 1) * nx + i + 1], d = v[(j + 1) * nx + i];
+        const code = (a > iso) | (b > iso) << 1 | (c > iso) << 2 | (d > iso) << 3;
+        if (code === 0 || code === 15) continue;
+        const x = i * CELL, y = j * CELL;
+        const top = [x + CELL * (iso - a) / (b - a), y], right = [x + CELL, y + CELL * (iso - b) / (c - b)];
+        const bot = [x + CELL * (iso - d) / (c - d), y + CELL], left = [x, y + CELL * (iso - a) / (d - a)];
+        const seg = (p, q) => { ctx.moveTo(p[0], p[1]); ctx.lineTo(q[0], q[1]); };
+        switch (code) {
+          case 1: case 14: seg(left, top); break;
+          case 2: case 13: seg(top, right); break;
+          case 3: case 12: seg(left, right); break;
+          case 4: case 11: seg(right, bot); break;
+          case 6: case 9: seg(top, bot); break;
+          case 7: case 8: seg(left, bot); break;
+          case 5: seg(left, top); seg(right, bot); break;
+          case 10: seg(top, right); seg(left, bot); break;
+        }
+      }
+      ctx.stroke();
+    }
+  }
+  let last = 0;
+  function loop(now) {
+    raf = requestAnimationFrame(loop);
+    if (!visible || now - last < 50) return;   // ~20 fps is plenty for a slow drift
+    last = now;
+    draw((now - t0) / 1000 * 6);
+  }
+  size(); draw(0);
+  addEventListener('resize', () => { size(); draw((performance.now() - t0) / 1000 * 6); });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', () => draw((performance.now() - t0) / 1000 * 6));
+  if (still) return;
+  new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(cv);
+  raf = requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
