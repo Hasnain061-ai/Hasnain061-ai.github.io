@@ -114,22 +114,17 @@ img { max-width: 100%; display: block; }
 .links a.primary:hover { background: var(--heat); border-color: var(--heat); color: #fff; }
 .links svg { width: 16px; height: 16px; flex: none; }
 
-.station { margin: 0; text-align: center; }
+.station { margin: 0 0 44px; text-align: center; }
 .station .ring {
   position: relative; width: 230px; height: 230px; border-radius: 50%;
   padding: 7px; border: 2px solid var(--heat); background: var(--paper);
 }
-.station .ring::before, .station .ring::after {
-  content: ""; position: absolute; background: var(--heat);
-}
-.station .ring::before { width: 2px; height: 22px; left: 50%; top: -24px; transform: translateX(-50%); }
-.station .ring::after { width: 22px; height: 2px; top: 50%; right: -24px; transform: translateY(-50%); }
 .station img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: 50% 18%; }
 .station figcaption { display: inline-block; margin-top: 12px; padding: 2px 10px; border-radius: 999px; background: var(--paper); font-size: .85rem; color: var(--graphite); }
 
 @media (max-width: 820px) {
   .hero .wrap { grid-template-columns: 1fr; gap: 36px; padding-top: 32px; padding-bottom: 56px; }
-  .station { order: -1; text-align: left; }
+  .station { order: -1; text-align: left; margin-bottom: 0; }
   .station .ring { width: 150px; height: 150px; }
   .hero canvas { -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.25) 70%); mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.25) 70%); }
 }
