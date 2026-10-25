@@ -153,6 +153,9 @@ p { max-width: 68ch; }
 .does b { display: block; font-weight: 650; }
 .does span { color: var(--graphite); font-size: .98rem; }
 .stack { margin-top: 18px; color: var(--graphite); font-size: .95rem; }
+.watch { margin-top: 12px; font-size: .95rem; }
+.gallery-more { margin-top: 24px; }
+.portal-next { margin-top: 72px; padding-top: 48px; border-top: 1px solid var(--rule); }
 @media (max-width: 820px) { .feature-head { grid-template-columns: 1fr; gap: 28px; } }
 
 .shot { margin: 0; }
@@ -292,6 +295,7 @@ footer { padding: 28px 0 40px; color: var(--graphite); font-size: .88rem; }
           <p class="for">A portal for NDMA Pakistan</p>
           <p class="what">Shows how heat in Pakistan has changed since 1980, and which districts face a heatwave in the next seven days.</p>
           <p class="stack">Built with Mapbox GL JS, plain JavaScript, a FastAPI backend and Python climate tooling.</p>
+          <p class="watch"><a href="https://lnkd.in/p/dy69fhmt">Watch the demo video on LinkedIn</a>. <a href="https://github.com/Hasnain061-ai/heatwave-intelligence-showcase">Screens and details on GitHub</a>.</p>
         </div>
         <ul class="does">
           <li><b>45 years of station data on one map</b><span>PMD records from 1980 to 2024 on a 0.45° grid (about 50 km), with five heatwave measures at four percentile thresholds.</span></li>
@@ -320,8 +324,70 @@ footer { padding: 28px 0 40px; color: var(--graphite); font-size: .88rem; }
           <figcaption>The chat assistant beside the national trend analysis.</figcaption>
         </figure>
       </div>
+      <div class="gallery gallery-more">
+        <figure class="shot">
+          <img src="assets/hw-difference.webp" width="1376" height="784" loading="lazy" alt="Difference map of hot days per year, 2010 to 2024 minus 1980 to 1994, with the biggest rise around Sukkur.">
+          <figcaption>Where hot days rose or fell, 2010&ndash;2024 minus 1980&ndash;1994.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/hw-validation.webp" width="1376" height="784" loading="lazy" alt="Table and charts comparing temperature trends per decade from PMD's report with the portal's own, for nine regions.">
+          <figcaption>Trends per decade from PMD's report beside the portal's own, by region.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/hw-location.webp" width="1376" height="784" loading="lazy" alt="Chart of hot days per year at a point near Multan, with the nearest station and a trend line.">
+          <figcaption>Any place through time, with its nearest station and a trend test.</figcaption>
+        </figure>
+      </div>
       <div class="verify">
         <p><b>Checked against the record.</b> Tested on July and August 2026 against 111 PMD stations, the outlook caught 80% of observed heatwave days, and 23% of its calls were false alarms. The portal prints this beside the forecast, along with the months it has not been tested on yet.</p>
+      </div>
+
+      <div class="portal-next" id="ocean-intelligence">
+      <div class="feature-head">
+        <div>
+          <h3>Ocean Intelligence</h3>
+          <p class="for">A portal for NDMA Pakistan</p>
+          <p class="what">Shows how acidity, heat and oxygen in Pakistan's seas have changed since the 1980s, and where they are heading by 2050.</p>
+          <p class="stack">Built with Mapbox GL JS, plain JavaScript, Chart.js and a Python analysis pipeline.</p>
+          <p class="watch"><a href="https://lnkd.in/p/dcSiaMx6">Watch the demo video on LinkedIn</a>. <a href="https://github.com/Hasnain061-ai/ocean-intelligence-showcase">Screens and details on GitHub</a>.</p>
+        </div>
+        <ul class="does">
+          <li><b>Acidification, mapped</b><span>Surface pH in Pakistan's Exclusive Economic Zone fell from 8.08 in 1985 to 8.02 in 2024, about 16% more acidity, and it fell in every area checked.</span></li>
+          <li><b>Warming and marine heatwaves</b><span>The sea has warmed by 1.0 to 1.3 &deg;C since 1982. Marine heatwave days rose from about 23 a year (1991&ndash;2020 average) to about 100 (2021&ndash;2025).</span></li>
+          <li><b>Low oxygen on the shelf</b><span>In the southwest monsoon, 24% of the Sindh shelf floor sits below 2 mg/L of oxygen.</span></li>
+          <li><b>Outlook to 2050</b><span>Low- and high-emission paths, side by side or against today.</span></li>
+          <li><b>A chat assistant</b><span>Questions in English or Roman Urdu, answered from the study's numbers.</span></li>
+        </ul>
+      </div>
+
+      <figure class="shot big">
+        <img src="assets/oi-explorer.webp" width="1376" height="784" loading="lazy" alt="Ocean Intelligence portal: annual mean surface pH across Pakistan's Exclusive Economic Zone in 2024, with the insights panel open.">
+        <figcaption>Annual mean surface pH in 2024 across the zone, with the key points beside the map.</figcaption>
+      </figure>
+      <div class="gallery">
+        <figure class="shot">
+          <img src="assets/oi-chat.webp" width="1376" height="784" loading="lazy" alt="The chat assistant answering a Roman Urdu question on marine heatwave days, with a chart and the map.">
+          <figcaption>A question in Roman Urdu, answered with the study's numbers, a chart and the map.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/oi-analysis.webp" width="1376" height="784" loading="lazy" alt="Bar chart of surface pH for the whole zone, falling from 1985 to 2024, with a trend line.">
+          <figcaption>Surface pH through time, 1985&ndash;2024, with its trend.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/oi-findings.webp" width="1376" height="784" loading="lazy" alt="The findings page with cards for acidification, warming, marine heatwaves, oxygen and overall climate pressure.">
+          <figcaption>The main findings, each with what it means.</figcaption>
+        </figure>
+      </div>
+      <div class="gallery gallery-more">
+        <figure class="shot">
+          <img src="assets/oi-2050.webp" width="1376" height="784" loading="lazy" alt="Surface pH in 2050 side by side: low emissions on the left, high emissions on the right.">
+          <figcaption>Surface pH in 2050, low emissions against high emissions.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/oi-difference.webp" width="1376" height="784" loading="lazy" alt="Difference map of surface pH, 2015 to 2024 minus 1985 to 1994, lower in every cell.">
+          <figcaption>Change in surface pH, 2015&ndash;2024 minus 1985&ndash;1994: lower everywhere.</figcaption>
+        </figure>
+      </div>
       </div>
     </div>
   </section>
@@ -329,20 +395,15 @@ footer { padding: 28px 0 40px; color: var(--graphite); font-size: .88rem; }
   <section id="next" aria-labelledby="next-h">
     <div class="wrap">
       <h2 id="next-h">In progress</h2>
-      <p class="lede">Two larger portals I am still polishing. Screens will go up here when they are ready.</p>
+      <p class="lede">A larger portal I am still polishing. Screens will go up here when it is ready.</p>
       <div class="next">
         <article>
           <h3>NDMA Cloud-based Early Warning System</h3>
           <span class="state">In development at NDMA</span>
           <p>One map for several hazards: forecasts from seven weather models, flood monitoring from Sentinel-1 radar and optical imagery, drought monitoring for 160 districts, a crop water outlook, and river discharge. Each module will become its own portal, as Heatwave Intelligence did.</p>
         </article>
-        <article>
-          <h3>Pakistan Ocean Climate Portal</h3>
-          <span class="state">Being polished</span>
-          <p>Ocean acidification, warming, oxygen and fisheries in Pakistan's Exclusive Economic Zone, observed from 1982 to 2025 with an outlook to 2050. Every method follows the published literature.</p>
-        </article>
       </div>
-      <p class="note">These portals' code belongs to NDMA, so it is not public.</p>
+      <p class="note">This portal's code belongs to NDMA, so it is not public.</p>
 
       <h3 class="more-h">More Geo-AI projects</h3>
       <ul class="more">
