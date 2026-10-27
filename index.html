@@ -156,6 +156,8 @@ p { max-width: 68ch; }
 .watch { margin-top: 12px; font-size: .95rem; }
 .gallery-more { margin-top: 24px; }
 .portal-next { margin-top: 72px; padding-top: 48px; border-top: 1px solid var(--rule); }
+.dev-tag { display: inline-block; margin: 10px 0 0; padding: 3px 10px; border: 1px solid var(--heat); border-radius: 999px; color: var(--heat); font-size: .85rem; font-weight: 600; }
+.shot.wide img { aspect-ratio: 1376 / 649; }
 @media (max-width: 820px) { .feature-head { grid-template-columns: 1fr; gap: 28px; } }
 
 .shot { margin: 0; }
@@ -405,6 +407,46 @@ footer { padding: 28px 0 40px; color: var(--graphite); font-size: .88rem; }
           <img src="assets/oi-oxygen.webp" width="1376" height="784" loading="lazy" alt="Map of oxygen at the seabed, mean 2004 to 2024: a band of very low oxygen along the shelf edge off Makran and Sindh.">
           <figcaption>Oxygen at the seabed, 2004&ndash;2024: a low-oxygen band along the shelf edge, near zero in places off Sindh.</figcaption>
         </figure>
+      </div>
+      </div>
+
+      <div class="portal-next" id="digital-twin">
+      <div class="feature-head">
+        <div>
+          <h3>Heatwave and Flood Digital Twin</h3>
+          <span class="dev-tag">In development &middot; prototype</span>
+          <p class="what">The next step after Heatwave Intelligence: a 3D digital twin of a real neighbourhood with two hazard modules, heatwave and flood, that shows what is exposed to each and how vulnerable it is, building by building.</p>
+          <p class="stack">Built with CesiumJS on real 3D geography. Modules: heatwave and flood, both in the same twin.</p>
+        </div>
+        <ul class="does">
+          <li><b>Heatwave and flood in one twin</b><span>Both modules run on the same 3D neighbourhood and are switched from one scenario panel.</span></li>
+          <li><b>Exposure and vulnerability</b><span>Which buildings and roads sit in harm's way, and how vulnerable they are, mapped down to a single building.</span></li>
+          <li><b>A real neighbourhood in 3D</b><span>Islamabad's F-8/1 sector, with 476 mapped building footprints.</span></li>
+          <li><b>Scenarios through time</b><span>An event timeline hour by hour, before and during the event, in natural or analytical view.</span></li>
+          <li><b>A guided story</b><span>A six-chapter tour from the whole neighbourhood down to one street and one building.</span></li>
+        </ul>
+      </div>
+
+      <figure class="shot big wide">
+        <img src="assets/dt-corridor.webp" width="1376" height="649" loading="lazy" alt="3D view of the F-8/1 sector in Islamabad: building outlines in cyan, with the buildings inside a flood scenario's affected corridor highlighted in amber.">
+        <figcaption>The affected corridor in a test flood scenario: highlighted buildings are the ones the water reaches.</figcaption>
+      </figure>
+      <div class="gallery">
+        <figure class="shot wide">
+          <img src="assets/dt-street.webp" width="1376" height="649" loading="lazy" alt="Street-level 3D view of a tree-lined road between houses in F-8/1, before the event.">
+          <figcaption>Street level in F-8/1, before the event.</figcaption>
+        </figure>
+        <figure class="shot wide">
+          <img src="assets/dt-building.webp" width="1376" height="649" loading="lazy" alt="Close 3D view of a single house, with exposure figures in a side panel.">
+          <figcaption>Down to one building and its exposure.</figcaption>
+        </figure>
+        <figure class="shot wide">
+          <img src="assets/dt-workspace.webp" width="1376" height="649" loading="lazy" alt="The twin's workspace: scenario controls with Flood and Heat modules, a 3D map of the sector, a tour panel and a 24-hour event timeline.">
+          <figcaption>The workspace: Flood and Heat modules, scenario controls and the 24-hour event timeline.</figcaption>
+        </figure>
+      </div>
+      <div class="verify">
+        <p><b>Work in progress.</b> The flood scenario in these screens is synthetic, used to build and test the twin. Both modules are still being built.</p>
       </div>
       </div>
     </div>
