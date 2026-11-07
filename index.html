@@ -130,6 +130,9 @@ h3 { font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -.025em; line-height: 
 .hero h1 .sel::after { inset: 3px -10px 1px; }
 .hero h1 .sel > .h.tl, .hero h1 .sel > .h.tr { top: -3px; }
 .hero h1 .sel > .h.bl, .hero h1 .sel > .h.br { bottom: -5px; }
+/* the boxes round the name belong to the live build; once it is over they fade out */
+.hero h1 .sel::after, .hero h1 .sel > .h { transition: opacity .6s; }
+html:not(.tour) .hero h1 .sel::after, html:not(.tour) .hero h1 .sel > .h { opacity: 0; }
 .hero .line { margin: 30px 0 0; font-size: clamp(19px, 2vw, 24px); line-height: 1.4; max-width: 30ch; color: #E4E4E7; letter-spacing: -.015em; font-weight: 500; }
 .hero .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
 
