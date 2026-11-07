@@ -127,6 +127,9 @@ h3 { font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -.025em; line-height: 
 .hero h1 { font-size: clamp(56px, 10vw, 136px); line-height: .9; letter-spacing: -.055em; margin-top: 34px; }
 .hero h1 > span { display: block; }
 .hero h1 .sel { display: inline-block; --c: var(--cyan); }
+.hero h1 .sel::after { inset: 3px -10px 1px; }
+.hero h1 .sel > .h.tl, .hero h1 .sel > .h.tr { top: -3px; }
+.hero h1 .sel > .h.bl, .hero h1 .sel > .h.br { bottom: -5px; }
 .hero .line { margin: 30px 0 0; font-size: clamp(19px, 2vw, 24px); line-height: 1.4; max-width: 30ch; color: #E4E4E7; letter-spacing: -.015em; font-weight: 500; }
 .hero .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
 
@@ -442,6 +445,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 .replay.on { opacity: 1; transform: none; pointer-events: auto; }
 @media (max-width: 560px) {
   .hud { gap: 10px; font-size: 12px; bottom: 14px; }
+  .skip { bottom: 66px; }                 /* above the status bar on narrow screens */
   .hud .bar { display: none; }
 }
 
@@ -573,7 +577,7 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
     <div class="wrap">
       <div>
         <span class="eyebrow">GeoAI · Meteorology · Early warning</span>
-        <h1 data-agent="h1.name"><span>Muhammad</span><span><span class="sel">Hasnain<span class="hot">.</span><i class="h tl"></i><i class="h tr"></i><i class="h bl"></i><i class="h br"></i></span></span></h1>
+        <h1 data-agent="h1.name"><span><span class="sel">Muhammad<i class="h tl"></i><i class="h tr"></i><i class="h bl"></i><i class="h br"></i></span></span><span><span class="sel">Hasnain<span class="hot">.</span><i class="h tl"></i><i class="h tr"></i><i class="h bl"></i><i class="h br"></i></span></span></h1>
         <p class="role">GeoAI developer and meteorologist at the National Disaster Management Authority, Pakistan</p>
         <p class="line" data-agent="p.tagline">Reading the Earth from space and the sky from data, then turning it into elegant <span class="hot">agentic systems.</span></p>
         <div class="links" data-agent="div.actions">
@@ -1399,6 +1403,12 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
   replay.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 3v6h6"/></svg>Replay build';
   replay.addEventListener('click', () => { scrollTo(0, 0); location.reload(); });
   document.body.appendChild(replay);
+  // for visitors who have seen the build before: this button, and only this, finishes it at once
+  const skip = document.createElement('button');
+  skip.type = 'button'; skip.className = 'replay skip';
+  skip.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 6v12l8-6zM12 6v12l8-6z"/></svg>Skip automation';
+  skip.addEventListener('click', () => end(true));
+  document.body.appendChild(skip);
   const progress = p => {
     hud.querySelector('.bar b').style.width = p + '%';
     hud.querySelector('.pct').textContent = Math.round(p) + '%';
@@ -1414,7 +1424,7 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
   }
 
   let t0 = 0;
-  function end() {
+  function end(skipped) {
     if (!tour) return;
     tour = false;
     root.classList.remove('tour');
@@ -1425,7 +1435,8 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
     layer.style.opacity = 0;
     setTimeout(() => { layer.replaceChildren(); }, 800);
     progress(100);
-    hud.querySelector('.msg').textContent = `Built by ${n} agents in ${Math.round((performance.now() - t0) / 1000)} s`;
+    skip.classList.remove('on');
+    hud.querySelector('.msg').textContent = skipped ? 'Build skipped' : `Built by ${n} agents in ${Math.round((performance.now() - t0) / 1000)} s`;
     setTimeout(() => hud.classList.remove('on'), 2200);
     setTimeout(() => replay.classList.add('on'), 2400);
     // a visitor who came by a link to a section (e.g. #ocean-intelligence) is taken there once the build is done
@@ -1489,6 +1500,7 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
     GROUPS.forEach(g => io.observe(g.root));
     wfs.forEach(w => wio.observe(w));
     AGENTS.forEach(makeAgent);
+    setTimeout(() => { if (tour) skip.classList.add('on'); }, 600);
     // while the crew builds, scrolling and scroll keys do nothing (clicks are off in CSS),
     // so a stray press cannot stop the build before it is complete
     const block = e => { if (tour) e.preventDefault(); };
