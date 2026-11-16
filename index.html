@@ -603,7 +603,7 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
 
       <div class="stage" aria-hidden="true">
         <div class="mini m1"><img src="assets/hw-explorer.webp" alt=""></div>
-        <div class="mini m3"><img src="assets/dt-corridor.webp" alt=""></div>
+        <div class="mini m3"><img src="assets/dt-flood-sector.webp" alt=""></div>
         <div class="mini m2"><img src="assets/oi-warming.webp" alt=""></div>
         <div class="portrait sel" data-agent="img.portrait">
           <div class="frame"><img src="assets/photo.webp" alt="Muhammad Hasnain"></div>
@@ -636,31 +636,86 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
       </div>
 
       <div class="packs">
+        <a class="pack p-twin rv" href="#digital-twin" data-agent="card.twin">
+          <div class="top"><span>NDMA · 01</span><span>Built</span></div>
+          <h3>Heatwave and Flood Digital Twin</h3>
+          <div class="cover"><img src="assets/dt-flood-sector.webp" alt="" loading="lazy"></div>
+          <span class="price">Twin cities<small>Islamabad and Rawalpindi</small></span>
+        </a>
         <a class="pack p-heat rv" href="#heatwave" data-agent="card.heatwave">
-          <div class="top"><span>NDMA · 01</span><span>Live</span></div>
+          <div class="top"><span>NDMA · 02</span><span>Live</span></div>
           <h3>Heatwave Intelligence</h3>
           <div class="cover"><img src="assets/hw-outlook.webp" alt="" loading="lazy"></div>
           <span class="price">80%<small>heatwave days caught</small></span>
         </a>
         <a class="pack p-ocean rv" href="#ocean-intelligence" data-agent="card.ocean">
-          <div class="top"><span>NDMA · 02</span><span>Live</span></div>
+          <div class="top"><span>NDMA · 03</span><span>Live</span></div>
           <h3>Ocean Intelligence</h3>
           <div class="cover"><img src="assets/oi-oxygen.webp" alt="" loading="lazy"></div>
           <span class="price">pH 8.08 → 8.02<small>1985 to 2024</small></span>
         </a>
-        <a class="pack p-twin rv" href="#digital-twin" data-agent="card.twin">
-          <div class="top"><span>NDMA · 03</span><span>Prototype</span></div>
-          <h3>Heatwave and Flood Digital Twin</h3>
-          <div class="cover"><img src="assets/dt-workspace.webp" alt="" loading="lazy"></div>
-          <span class="price">476<small>buildings in 3D</small></span>
-        </a>
       </div>
+
+      <!-- Digital twin -->
+      <article class="portal" id="digital-twin">
+        <div class="portal-head rv">
+          <div>
+            <span class="num">PORTAL 01</span>
+            <h3 data-agent="h3.title">Heatwave and Flood <span class="hot">Digital Twin</span></h3>
+            <p class="for">A portal for NDMA Pakistan</p>
+            <p class="what">A 3D digital twin of the twin cities, Islamabad and Rawalpindi, that shows a flood street by street and building by building: which buildings the water reaches, how deep it gets, and how the event unfolds hour by hour. It works at two scales: one flood event across both cities, and one neighbourhood in close detail.</p>
+            <p class="stack">Built with CesiumJS on Cesium ion, Microsoft and OpenStreetMap building footprints, a Mapzen / USGS elevation model, and representative 3D architecture on the mapped footprints.</p>
+          </div>
+          <ul class="does" data-agent="ul.features">
+            <li><span class="i">01</span><b>One flood event across the twin cities</b><span>A modelled event based on July 2025 across Islamabad and Rawalpindi, with 17 focus neighbourhoods, among them Loharan Bazar, Kohati Bazar and Mohan Pura, each with its exposed buildings counted.</span></li>
+            <li><span class="i">02</span><b>A neighbourhood in close detail</b><span>Islamabad's F-8/1 sector: 476 mapped building footprints in 3D, from the whole sector down to one street and one building.</span></li>
+            <li><span class="i">03</span><b>Hour-by-hour playback</b><span>A 24-hour scenario timeline. Water extent, depth and building colours follow the model frames: under 0.10 m, 0.10 to 2 m, and 2 m or more.</span></li>
+            <li><span class="i">04</span><b>Exposure, building by building</b><span>Live counts of the buildings the water reaches and the deepest point, for the whole area and for any single building.</span></li>
+            <li><span class="i">05</span><b>Guided tours</b><span>A seven-chapter tour of the neighbourhood, a twelve-step tour of the city event, and a before-and-after view of one street.</span></li>
+          </ul>
+        </div>
+
+        <figure class="shot big rv" data-agent="canvas.twin3d">
+          <div class="img"><img src="assets/dt-flood-sector.webp" width="1920" height="1080" loading="lazy" alt="3D view of the F-8/1 sector in Islamabad during a test flood: water in blue across most of the sector, with live panels counting the buildings reached and the deepest point."></div>
+          <figcaption>F-8/1, Islamabad, during the test flood: the water spreads across the sector while live panels count the buildings it reaches.</figcaption>
+        </figure>
+        <div class="gallery">
+          <figure class="shot rv">
+            <div class="img"><img src="assets/dt-before.webp" width="1376" height="774" loading="lazy" alt="Street-level 3D view of a tree-lined road between houses in F-8/1, before the flood."></div>
+            <figcaption>Before the event: representative architecture on mapped footprints.</figcaption>
+          </figure>
+          <figure class="shot rv">
+            <div class="img"><img src="assets/dt-street-flood.webp" width="1376" height="774" loading="lazy" alt="The same street under water, with panels showing the depth, the buildings reached and the scenario hour."></div>
+            <figcaption>The same street as the water rises, hour by hour.</figcaption>
+          </figure>
+          <figure class="shot rv">
+            <div class="img"><img src="assets/dt-one-building.webp" width="1376" height="774" loading="lazy" alt="Close 3D view of one house standing in flood water, with a panel showing its depth at ground level."></div>
+            <figcaption>One building, one number: its flood depth at ground level.</figcaption>
+          </figure>
+          <figure class="shot rv">
+            <div class="img"><img src="assets/dt-depth-reveal.webp" width="1376" height="774" loading="lazy" alt="Top-down view of the sector with buildings coloured by depth class inside an expanding ring."></div>
+            <figcaption>The peak frame revealed across the sector, coloured by depth class.</figcaption>
+          </figure>
+          <figure class="shot rv">
+            <div class="img"><img src="assets/dt-regional.webp" width="1376" height="774" loading="lazy" alt="City-wide 3D map with 17 circled focus neighbourhoods, each labelled with its exposed and total buildings."></div>
+            <figcaption>One flood event across the twin cities, modelled on July 2025: 17 focus neighbourhoods, each with its exposed buildings.</figcaption>
+          </figure>
+          <figure class="shot rv">
+            <div class="img"><img src="assets/dt-loharan.webp" width="1376" height="774" loading="lazy" alt="Loharan Bazar in 3D, with buildings coloured blue and yellow by flood depth class."></div>
+            <figcaption>Loharan Bazar, Rawalpindi, in the depth overview, building by building.</figcaption>
+          </figure>
+        </div>
+        <div class="verify rv">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5h.01"/></svg>
+          <p><b>Clear about what it shows.</b> The F-8/1 flood is a synthetic test scenario, and the city view uses modelled, provisional depths. The twin shows depth at ground level. It does not calculate water flow, interior flooding or damage, and it is not a safety assessment.</p>
+        </div>
+      </article>
 
       <!-- Heatwave -->
       <article class="portal" id="heatwave">
         <div class="portal-head rv">
           <div>
-            <span class="num">PORTAL 01</span>
+            <span class="num">PORTAL 02</span>
             <h3 data-agent="h3.title">Heatwave <span class="hot">Intelligence</span></h3>
             <p class="for">A portal for NDMA Pakistan</p>
             <p class="what">Shows how heat in Pakistan has changed since 1980, and which districts face a heatwave in the next seven days.</p>
@@ -721,7 +776,7 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
       <article class="portal" id="ocean-intelligence">
         <div class="portal-head rv">
           <div>
-            <span class="num">PORTAL 02</span>
+            <span class="num">PORTAL 03</span>
             <h3 data-agent="h3.title">Ocean <span class="hot">Intelligence</span></h3>
             <p class="for">A portal for NDMA Pakistan</p>
             <p class="what">Shows how acidity, heat and oxygen in Pakistan's seas have changed since the 1980s, and where they are heading by 2050.</p>
@@ -771,49 +826,6 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
             <div class="img"><img src="assets/oi-oxygen.webp" width="1376" height="784" loading="lazy" alt="Map of oxygen at the seabed, mean 2004 to 2024: a band of very low oxygen along the shelf edge off Makran and Sindh."></div>
             <figcaption>Oxygen at the seabed, 2004–2024: a low-oxygen band along the shelf edge, near zero in places off Sindh.</figcaption>
           </figure>
-        </div>
-      </article>
-
-      <!-- Digital twin -->
-      <article class="portal" id="digital-twin">
-        <div class="portal-head rv">
-          <div>
-            <span class="num">PORTAL 03</span>
-            <h3 data-agent="h3.title">Heatwave and Flood <span class="hot">Digital Twin</span></h3>
-            <span class="dev-tag">In development · prototype</span>
-            <p class="what">The next step after Heatwave Intelligence: a 3D digital twin of a real neighbourhood with two hazard modules, heatwave and flood, that shows what is exposed to each and how vulnerable it is, building by building.</p>
-            <p class="stack">Built with CesiumJS on real 3D geography. Modules: heatwave and flood, both in the same twin.</p>
-          </div>
-          <ul class="does" data-agent="ul.features">
-            <li><span class="i">01</span><b>Heatwave and flood in one twin</b><span>Both modules run on the same 3D neighbourhood and are switched from one scenario panel.</span></li>
-            <li><span class="i">02</span><b>Exposure and vulnerability</b><span>Which buildings and roads sit in harm's way, and how vulnerable they are, mapped down to a single building.</span></li>
-            <li><span class="i">03</span><b>A real neighbourhood in 3D</b><span>Islamabad's F-8/1 sector, with 476 mapped building footprints.</span></li>
-            <li><span class="i">04</span><b>Scenarios through time</b><span>An event timeline hour by hour, before and during the event, in natural or analytical view.</span></li>
-            <li><span class="i">05</span><b>A guided story</b><span>A six-chapter tour from the whole neighbourhood down to one street and one building.</span></li>
-          </ul>
-        </div>
-
-        <figure class="shot big wide rv" data-agent="canvas.twin3d">
-          <div class="img"><img src="assets/dt-corridor.webp" width="1920" height="905" loading="lazy" alt="3D view of the F-8/1 sector in Islamabad: building outlines in cyan, with the buildings inside a flood scenario's affected corridor highlighted in amber."></div>
-          <figcaption>The affected corridor in a test flood scenario: highlighted buildings are the ones the water reaches.</figcaption>
-        </figure>
-        <div class="gallery">
-          <figure class="shot wide rv">
-            <div class="img"><img src="assets/dt-street.webp" width="1920" height="905" loading="lazy" alt="Street-level 3D view of a tree-lined road between houses in F-8/1, before the event."></div>
-            <figcaption>Street level in F-8/1, before the event.</figcaption>
-          </figure>
-          <figure class="shot wide rv">
-            <div class="img"><img src="assets/dt-building.webp" width="1920" height="905" loading="lazy" alt="Close 3D view of a single house, with exposure figures in a side panel."></div>
-            <figcaption>Down to one building and its exposure.</figcaption>
-          </figure>
-          <figure class="shot wide rv">
-            <div class="img"><img src="assets/dt-workspace.webp" width="1920" height="905" loading="lazy" alt="The twin's workspace: scenario controls with Flood and Heat modules, a 3D map of the sector, a tour panel and a 24-hour event timeline."></div>
-            <figcaption>The workspace: Flood and Heat modules, scenario controls and the 24-hour event timeline.</figcaption>
-          </figure>
-        </div>
-        <div class="verify rv">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-          <p><b>Work in progress.</b> The flood scenario in these screens is synthetic, used to build and test the twin. Both modules are still being built.</p>
         </div>
       </article>
     </div>
@@ -1469,8 +1481,8 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
   }
 
   const STOPS = [
-    '#work .sec-head', '.packs', '#heatwave .portal-head', '#heatwave .shot.big',
-    '#ocean-intelligence .portal-head', '#ocean-intelligence .gallery', '#digital-twin .portal-head',
+    '#work .sec-head', '.packs', '#digital-twin .portal-head', '#digital-twin .shot.big',
+    '#heatwave .portal-head', '#heatwave .shot.big', '#ocean-intelligence .portal-head',
     '#next', '#experience', '#research', '#skills', '#education', '#certificates',
     '#training', '#contact',
   ].map(s => document.querySelector(s)).filter(Boolean);
