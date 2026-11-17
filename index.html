@@ -725,7 +725,7 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
             <p class="stack">Built with Mapbox GL JS, Chart.js and a FastAPI backend, on a Python pipeline (xarray, rasterio, pandas, Google Earth Engine) with PMD, ERA5-Land and MODIS data.</p>
           </div>
           <ul class="does" data-agent="ul.features">
-            <li><span class="i">01</span><b>Five indicators, one category</b><span>SPI-3 and SPEI-1 from PMD rainfall and temperature, soil moisture (SMCI) from ERA5-Land, and heat stress and surface dryness (TCI, TVDI) from MODIS, combined into one drought index with five levels, from Normal to Extreme.</span></li>
+            <li><span class="i">01</span><b>Five indicators, one category</b><span>SPI-3, SPEI-1, SMCI, TCI and TVDI, combined into one drought index with five levels, from Normal to Extreme.</span></li>
             <li><span class="i">02</span><b>160 districts, month by month</b><span>A 12-month time bar for 2018 and 2021, both processed with the same method, with swipe, side-by-side and difference views.</span></li>
             <li><span class="i">03</span><b>What drove the drought</b><span>For each month, how many districts each indicator flagged, and the most affected districts with the indicators behind each one.</span></li>
             <li><span class="i">04</span><b>2018 in context</b><span>Pakistan received 25% less rain than normal in 2018 (323 mm against 433 mm), its 4th-driest year of 1980–2024. Sindh was 58% below normal and Balochistan 43%.</span></li>
@@ -762,10 +762,6 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
             <div class="img"><img src="assets/dr-assistant.webp" width="1376" height="744" loading="lazy" alt="The assistant panel answering which districts are on Warning or Alert, with a table of districts and their indicators beside the soil moisture map."></div>
             <figcaption>The assistant lists the 20 districts on Warning or Alert in January 2018.</figcaption>
           </figure>
-        </div>
-        <div class="verify rv">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
-          <p><b>Checked end to end.</b> An independent script recomputes the whole chain from the published indicators: it passed 35 of 35 checks for 2018 and 34 of 34 for 2021, and it reproduces the scientist's own 2018 workbook.</p>
         </div>
       </article>
 
