@@ -277,7 +277,7 @@ section { padding: clamp(80px, 11vw, 150px) 0 0; scroll-margin-top: 64px; }
 .more-h { margin-top: 56px; font-size: 22px; }
 .more { list-style: none; padding: 0; margin: 20px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .more li { padding: 16px 18px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,.02); color: #D4D4D8; font-size: 15px; display: flex; gap: 12px; align-items: flex-start; }
-.more li::before { content: "↗"; color: var(--accent); font-weight: 700; }
+.more li::before { content: "•"; color: var(--accent); font-weight: 700; }
 @media (max-width: 860px) { .more { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .more { grid-template-columns: 1fr; } }
 
@@ -602,11 +602,11 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
       </div>
 
       <div class="stage" aria-hidden="true">
-        <div class="mini m1"><img src="assets/hw-explorer.webp" alt=""></div>
-        <div class="mini m3"><img src="assets/dt-flood-sector.webp" alt=""></div>
-        <div class="mini m2"><img src="assets/oi-warming.webp" alt=""></div>
+        <div class="mini m1"><img src="assets/hw-explorer.webp" width="1376" height="784" alt="Heatwave Intelligence map of hot days across Pakistan"></div>
+        <div class="mini m3"><img src="assets/dt-flood-sector.webp" width="1920" height="1080" alt="Flood Digital Twin: a sector of Islamabad under water in 3D"></div>
+        <div class="mini m2"><img src="assets/oi-warming.webp" width="1376" height="784" alt="Ocean Intelligence map of sea-surface warming off Pakistan"></div>
         <div class="portrait sel" data-agent="img.portrait">
-          <div class="frame"><img src="assets/photo.webp" alt="Muhammad Hasnain"></div>
+          <div class="frame"><img src="assets/photo.webp" width="480" height="480" alt="Muhammad Hasnain"></div>
           <i class="h tl"></i><i class="h tr"></i><i class="h bl"></i><i class="h br"></i>
         </div>
         <span class="chip tag-float t1">NDMA · Islamabad</span>
@@ -638,20 +638,20 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
       <div class="packs">
         <a class="pack p-twin rv" href="#digital-twin" data-agent="card.twin">
           <div class="top"><span>Portal · 01</span><span>Built</span></div>
-          <h3>Heatwave and Flood Digital Twin</h3>
-          <div class="cover"><img src="assets/dt-flood-sector.webp" alt="" loading="lazy"></div>
+          <h3>Flood Digital Twin</h3>
+          <div class="cover"><img src="assets/dt-flood-sector.webp" width="1920" height="1080" alt="Flood Digital Twin: the F-8/1 sector of Islamabad during a test flood" loading="lazy"></div>
           <span class="price">Twin cities<small>Islamabad and Rawalpindi</small></span>
         </a>
         <a class="pack p-heat rv" href="#heatwave" data-agent="card.heatwave">
           <div class="top"><span>Portal · 02</span><span>Live</span></div>
           <h3>Heatwave Intelligence</h3>
-          <div class="cover"><img src="assets/hw-outlook.webp" alt="" loading="lazy"></div>
+          <div class="cover"><img src="assets/hw-outlook.webp" width="1376" height="784" alt="Heatwave Intelligence: the 7-day heatwave outlook by district" loading="lazy"></div>
           <span class="price">80%<small>heatwave days caught</small></span>
         </a>
         <a class="pack p-ocean rv" href="#ocean-intelligence" data-agent="card.ocean">
           <div class="top"><span>Portal · 03</span><span>Live</span></div>
           <h3>Ocean Intelligence</h3>
-          <div class="cover"><img src="assets/oi-oxygen.webp" alt="" loading="lazy"></div>
+          <div class="cover"><img src="assets/oi-oxygen.webp" width="1376" height="784" alt="Ocean Intelligence: oxygen at the seabed off Pakistan" loading="lazy"></div>
           <span class="price">pH 8.08 → 8.02<small>1985 to 2024</small></span>
         </a>
       </div>
@@ -661,7 +661,7 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
         <div class="portal-head rv">
           <div>
             <span class="num">PORTAL 01</span>
-            <h3 data-agent="h3.title">Heatwave and Flood <span class="hot">Digital Twin</span></h3>
+            <h3 data-agent="h3.title">Flood <span class="hot">Digital Twin</span></h3>
             <p class="for">A portal for Pakistan</p>
             <p class="what">A 3D digital twin of the twin cities, Islamabad and Rawalpindi, that shows a flood street by street and building by building: which buildings the water reaches, how deep it gets, and how the event unfolds hour by hour. It works at two scales: one flood event across both cities, and one neighbourhood in close detail.</p>
             <p class="stack">Built with CesiumJS on Cesium ion, Microsoft and OpenStreetMap building footprints, a Mapzen / USGS elevation model, and representative 3D architecture on the mapped footprints.</p>
@@ -986,51 +986,51 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
       <div class="certs">
         <figure class="cert rv" data-agent="figure.cert">
           <a href="assets/certificates/unesco-flood-hazard-exposure-mapping.pdf" target="_blank" rel="noopener" aria-label="Open the Flood Hazard and Exposure Mapping certificate (PDF)">
-            <img src="assets/certificates/unesco-flood-hazard-exposure-mapping.webp" loading="lazy" alt="Flood Hazard and Exposure Mapping certificate, UNESCO, with International Partnerships Austria and Flanders"></a>
+            <img src="assets/certificates/unesco-flood-hazard-exposure-mapping.webp" width="720" height="471" loading="lazy" alt="Flood Hazard and Exposure Mapping certificate, UNESCO, with International Partnerships Austria and Flanders"></a>
           <figcaption>
             <b>Flood Hazard and Exposure Mapping</b>
             <span>UNESCO, with International Partnerships Austria and Flanders, Sep 2026</span>
-            <a class="verify-link" href="https://openlearning.unesco.org/certificates/3bda14d9d78f40928f95179bdd4e63bd" target="_blank" rel="noopener">Verify on UNESCO ↗</a>
+            <a class="verify-link" href="https://openlearning.unesco.org/certificates/3bda14d9d78f40928f95179bdd4e63bd" target="_blank" rel="noopener">Verify on UNESCO</a>
           </figcaption>
         </figure>
         <figure class="cert rv">
           <a href="assets/certificates/unitar-climate-adaptation-resilience.pdf" target="_blank" rel="noopener" aria-label="Open the Strengthening Climate Adaptation and Resilience certificate (PDF)">
-            <img src="assets/certificates/unitar-climate-adaptation-resilience.webp" loading="lazy" alt="Strengthening Climate Adaptation and Resilience certificate, UNITAR, UN CC:Learn and GIZ"></a>
+            <img src="assets/certificates/unitar-climate-adaptation-resilience.webp" width="720" height="509" loading="lazy" alt="Strengthening Climate Adaptation and Resilience certificate, UNITAR, UN CC:Learn and GIZ"></a>
           <figcaption><b>Strengthening Climate Adaptation and Resilience</b><span>UNITAR, UN CC:Learn and GIZ, Feb 2025</span></figcaption>
         </figure>
         <figure class="cert rv">
           <a href="assets/certificates/unitar-climate-champion.pdf" target="_blank" rel="noopener" aria-label="Open the Becoming a Climate Champion certificate (PDF)">
-            <img src="assets/certificates/unitar-climate-champion.webp" loading="lazy" alt="Becoming a Climate Champion certificate, UNITAR and UN Climate Change"></a>
+            <img src="assets/certificates/unitar-climate-champion.webp" width="720" height="509" loading="lazy" alt="Becoming a Climate Champion certificate, UNITAR and UN Climate Change"></a>
           <figcaption><b>Becoming a Climate Champion</b><span>UNITAR and UN Climate Change, Feb 2025</span></figcaption>
         </figure>
         <figure class="cert rv" data-agent="figure.cert">
           <a href="assets/certificates/microsoft-linkedin-generative-ai.pdf" target="_blank" rel="noopener" aria-label="Open the Career Essentials in Generative AI certificate (PDF)">
-            <img src="assets/certificates/microsoft-linkedin-generative-ai.webp" loading="lazy" alt="Career Essentials in Generative AI certificate, Microsoft and LinkedIn"></a>
+            <img src="assets/certificates/microsoft-linkedin-generative-ai.webp" width="720" height="556" loading="lazy" alt="Career Essentials in Generative AI certificate, Microsoft and LinkedIn"></a>
           <figcaption><b>Career Essentials in Generative AI</b><span>Microsoft and LinkedIn, Feb 2025</span></figcaption>
         </figure>
         <figure class="cert rv">
           <a href="assets/certificates/microsoft-linkedin-data-analysis.pdf" target="_blank" rel="noopener" aria-label="Open the Career Essentials in Data Analysis certificate (PDF)">
-            <img src="assets/certificates/microsoft-linkedin-data-analysis.webp" loading="lazy" alt="Career Essentials in Data Analysis certificate, Microsoft and LinkedIn"></a>
+            <img src="assets/certificates/microsoft-linkedin-data-analysis.webp" width="720" height="556" loading="lazy" alt="Career Essentials in Data Analysis certificate, Microsoft and LinkedIn"></a>
           <figcaption><b>Career Essentials in Data Analysis</b><span>Microsoft and LinkedIn, Mar 2025</span></figcaption>
         </figure>
         <figure class="cert rv">
           <a href="assets/certificates/linkedin-intro-ai.pdf" target="_blank" rel="noopener" aria-label="Open the Introduction to Artificial Intelligence certificate (PDF)">
-            <img src="assets/certificates/linkedin-intro-ai.webp" loading="lazy" alt="Introduction to Artificial Intelligence certificate, LinkedIn Learning"></a>
+            <img src="assets/certificates/linkedin-intro-ai.webp" width="720" height="556" loading="lazy" alt="Introduction to Artificial Intelligence certificate, LinkedIn Learning"></a>
           <figcaption><b>Introduction to Artificial Intelligence</b><span>LinkedIn Learning, Feb 2025</span></figcaption>
         </figure>
         <figure class="cert rv" data-agent="figure.cert">
           <a href="assets/certificates/esri-cartography.pdf" target="_blank" rel="noopener" aria-label="Open the Cartography certificate">
-            <img src="assets/certificates/esri-cartography.webp" loading="lazy" alt="Cartography certificate, Esri, 6-week MOOC"></a>
+            <img src="assets/certificates/esri-cartography.webp" width="720" height="509" loading="lazy" alt="Cartography certificate, Esri, 6-week MOOC"></a>
           <figcaption><b>Cartography</b><span>Esri, 6-week MOOC, Mar 2023</span><span class="name-note">Issued under the name Rana Hasnain</span></figcaption>
         </figure>
         <figure class="cert rv">
           <a href="assets/certificates/esri-spatial-analysis.pdf" target="_blank" rel="noopener" aria-label="Open the Going Places with Spatial Analysis certificate">
-            <img src="assets/certificates/esri-spatial-analysis.webp" loading="lazy" alt="Going Places with Spatial Analysis certificate, Esri, 6-week MOOC"></a>
+            <img src="assets/certificates/esri-spatial-analysis.webp" width="720" height="509" loading="lazy" alt="Going Places with Spatial Analysis certificate, Esri, 6-week MOOC"></a>
           <figcaption><b>Going Places with Spatial Analysis</b><span>Esri, 6-week MOOC, Mar 2023</span><span class="name-note">Issued under the name Rana Hasnain</span></figcaption>
         </figure>
         <figure class="cert rv">
           <a href="assets/certificates/geo-university-orthorectification.jpg" target="_blank" rel="noopener" aria-label="Open the Orthorectification of Aerial Imagery through OrthoPhoto.io certificate">
-            <img src="assets/certificates/geo-university-orthorectification.webp" loading="lazy" alt="Orthorectification of Aerial Imagery through OrthoPhoto.io certificate, Geo University"></a>
+            <img src="assets/certificates/geo-university-orthorectification.webp" width="720" height="509" loading="lazy" alt="Orthorectification of Aerial Imagery through OrthoPhoto.io certificate, Geo University"></a>
           <figcaption><b>Orthorectification of Aerial Imagery through OrthoPhoto.io</b><span>Geo University, Apr 2023</span><span class="name-note">Issued under the name Rana Hasnain</span></figcaption>
         </figure>
       </div>
@@ -1083,7 +1083,7 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
       <div class="contact-card rv" data-agent="form.contact">
         <span class="eyebrow">09 / Contact</span>
         <h2 id="contact-h" style="margin-top:20px">Get in <span class="hot">touch.</span></h2>
-        <p class="lede">Open to work on climate risk, early warning and GeoAI.</p>
+        <p class="lede">Open to work and to Master's research positions in climate risk, early warning and GeoAI.</p>
         <a class="mail" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ranahasnain061@gmail.com" target="_blank" rel="noopener">ranahasnain061@gmail.com</a>
         <div class="links">
           <a class="pill" href="assets/Muhammad_Hasnain_CV.pdf" download>Download CV</a>
@@ -1146,7 +1146,7 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
   const mobile = innerWidth < 700;
   let tour = true;        // the self-running build is on
   let done = false;       // everything has been revealed at once
-  const FAST = 0.22;      // typing and build delays while touring
+  const FAST = 0.05;      // typing and build delays while touring
   const k = () => (tour ? FAST : 1);
 
   const fit = () => { layer.style.height = root.scrollHeight + 'px'; };
@@ -1476,31 +1476,30 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
     while (tour && typingNow > 0 && performance.now() - s < max) await sleep(60);
   }
 
+  // a short pass over the main sections; the rest is revealed at once when the build ends
   const STOPS = [
-    '#work .sec-head', '.packs', '#digital-twin .portal-head', '#digital-twin .shot.big',
-    '#heatwave .portal-head', '#heatwave .shot.big', '#ocean-intelligence .portal-head',
-    '#next', '#experience', '#research', '#skills', '#education', '#certificates',
-    '#training', '#contact',
+    '#work .sec-head', '#digital-twin .portal-head', '#heatwave .portal-head',
+    '#ocean-intelligence .portal-head', '#contact',
   ].map(s => document.querySelector(s)).filter(Boolean);
 
   const runTour = async () => {
     root.style.scrollBehavior = 'auto';
-    await sleep(150);
+    await sleep(100);
     hud.classList.add('on');
-    await sleep(1000);                 // agents fly in
-    await settle(4000);                // hero is typed
-    await sleep(300);
+    await sleep(300);                  // agents fly in
+    await settle(700);                 // hero is typed
+    await sleep(150);
     for (let i = 0; i < STOPS.length && tour; i++) {
       const el = STOPS[i];
-      await scrollToY(el.getBoundingClientRect().top + scrollY - (mobile ? 76 : 96), mobile ? 440 : 480);
+      await scrollToY(el.getBoundingClientRect().top + scrollY - (mobile ? 76 : 96), mobile ? 200 : 220);
       progress(((i + 1) / (STOPS.length + 1)) * 100);
-      await sleep(200);
-      await settle(2200);
-      await sleep(mobile ? 260 : 300);
+      await sleep(60);
+      await settle(200);
+      await sleep(80);
     }
     if (!tour) return;
-    await scrollToY(0, 1100);
     end();
+    scrollTo(0, 0);
   };
 
   // The build starts once the cover page has lifted, or at once without one.
@@ -1526,7 +1525,7 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
 </script>
 <script>
 // Cover page: a loader counts to 100, then a cloud of glowing dots flies in and
-// settles into a halftone portrait in front of GEOAI × METEOROLOGIST. The dots
+// settles into a halftone portrait below GEOAI × METEOROLOGIST. The dots
 // have depth, so the portrait leans a little towards the mouse (and breathes
 // slowly when the mouse is still), just enough to read as 3D. "Enter portfolio"
 // opens the site. The dots are drawn with WebGL, so the motion stays smooth.
@@ -1543,7 +1542,7 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
   const cv = cover.querySelector('canvas');
   const ring = cover.querySelector('.loader .prog'), num = cover.querySelector('.loader span');
   const btn = cover.querySelector('.enter');
-  const FORM = 1700, SETTLE = FORM + 1000;      // flight time, and when the last dot has landed
+  const FORM = 800, SETTLE = FORM + 400;       // flight time, and when the last dot has landed
   const clamp = t => (t < 0 ? 0 : t > 1 ? 1 : t);
 
   // load → form → dots ; "photo" only when dots cannot be drawn
@@ -1556,23 +1555,25 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
     W = innerWidth; H = innerHeight; dpr = Math.min(2, devicePixelRatio || 1);
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
     const ratio = img.naturalWidth / img.naturalHeight;
-    // phones: a bigger figure that may run off both sides
-    const fh = narrow() ? Math.min(H * 0.64, (W * 1.1) / ratio) : Math.min(H * 0.7, (W * 0.8) / ratio), fw = fh * ratio;
-    const fx = (W - fw) / 2;
+    // three centred lines, GEOAI × METEOROLOGIST, all above the head so no letter is hidden
+    const ws = Math.min(W * (narrow() ? 0.112 : 0.085), H * (narrow() ? 0.13 : 0.1));
+    // METEOROLOGIST is set larger on its own, up to nearly the full width
+    const wm = Math.min(W * (narrow() ? 0.12 : 0.1), H * (narrow() ? 0.2 : 0.15));
+    cover.style.setProperty('--ws', ws + 'px');
+    cover.style.setProperty('--wmr', Math.max(1, wm / ws));
+    const word = cover.querySelector('.word'), pad = ws * 0.45;      // .word has .45em of padding for the glow
+    const textH = word.offsetHeight - 2 * pad, top = H * 0.04, gap = ws * 0.18;
+    // phones: a bigger figure that may run off both sides; the figure fills what the words leave
+    let fh = narrow() ? Math.min(H * 0.64, (W * 1.1) / ratio) : Math.min(H * 0.7, (W * 0.8) / ratio);
+    fh = Math.max(H * 0.3, Math.min(fh, H - top - textH - gap));
+    const fw = fh * ratio, fx = (W - fw) / 2;
     fig = { x: fx, y: H - fh, w: fw, h: fh };
     cover.style.setProperty('--fh', fh + 'px');
     cover.style.setProperty('--fx', fx + 'px');
-    // three centred lines: GEOAI and × sit above the head, METEOROLOGIST runs behind it
-    const ws = Math.min(W * (narrow() ? 0.112 : 0.1), H * 0.13);
-    // METEOROLOGIST is set larger on its own, up to nearly the full width
-    const wm = Math.min(W * (narrow() ? 0.12 : 0.118), H * 0.2);
-    cover.style.setProperty('--ws', ws + 'px');
-    cover.style.setProperty('--wmr', Math.max(1, wm / ws));
-    const x = cover.querySelector('.w-silver .x');
-    const wy = fig.y - ws * 0.12 - (x.offsetTop + x.offsetHeight);   // the × clears the top of the head
+    const wy = fig.y - gap - textH - pad;                            // the last line ends just above the head
     cover.style.setProperty('--wy', wy + 'px');
     // the words are cut away where the figure stands, so they never show between the dots
-    const word = cover.querySelector('.word'), wl = W / 2 - word.offsetWidth / 2;
+    const wl = W / 2 - word.offsetWidth / 2;
     const m = word.style;
     m.webkitMaskImage = m.maskImage = `linear-gradient(#000, #000), url("${img.src}")`;
     m.webkitMaskSize = m.maskSize = `100% 100%, ${fig.w}px ${fig.h}px`;
@@ -1698,7 +1699,7 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
       const size = .18 + 1.05 * Math.pow(tone, 1.15);                                   // halftone: light parts get bigger dots
       const a = Math.random() * Math.PI * 2, rr = .3 + Math.random() * .7;
       data.push(x / OW, y / OH, z, turn, .5 + Math.cos(a) * rr, .45 + Math.sin(a) * rr * .9 * (OW / OH), Math.random() - .5,
-        fy * 500 + Math.random() * 500, shade, size);
+        fy * 200 + Math.random() * 200, shade, size);
     }
     count = data.length / 10;
     spacing = step / OW;                          // grid step, in figure widths
@@ -1726,7 +1727,7 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
     raf = requestAnimationFrame(frame);
     const dt = Math.min(64, now - (last || now)); last = now;
     const t = now - tForm;
-    if (t >= SETTLE && phase === 'form') { phase = 'dots'; cover.classList.add('ready'); }
+    if (t >= SETTLE && phase === 'form') { phase = 'dots'; cover.classList.add('ready'); autoEnter(); }
     let ty = Math.sin(now / 3200) * .07, tp = Math.sin(now / 4300) * .03;
     if (mouse.seen) { ty = (mouse.x / W - .5) * .42; tp = (mouse.y / H - .5) * .2; }
     const k = 1 - Math.exp(-dt / 420);
@@ -1738,29 +1739,33 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
   function photoNow() {
     cover.classList.add('word-on', 'lit', 'ready');
     phase = 'photo'; gl = null;
+    autoEnter();
   }
+
+  // the portfolio opens by itself a moment after the portrait is complete
+  function autoEnter() { setTimeout(enter, 700); }
 
   function start() {
     cover.classList.add('loaded');
     layout();
     if (still) return photoNow();
     try { initGL(); sample(); } catch (e) { console.warn('cover: dots off,', e.message); return photoNow(); }
-    setTimeout(() => cover.classList.add('word-on'), 400);
+    setTimeout(() => cover.classList.add('word-on'), 200);
     phase = 'form'; tForm = performance.now();
     raf = requestAnimationFrame(frame);
   }
 
-  // loader: counts to 100 over ~1.5 s, holding at 90 until the photo has loaded
+  // loader: counts to 100 over ~0.6 s, holding at 90 until the photo has loaded
   let loaded = false;
   Promise.all([img.decode ? img.decode() : new Promise(r => (img.complete ? r() : (img.onload = r))), document.fonts?.ready])
     .then(() => { loaded = true; }, () => { loaded = true; });
   const t0 = performance.now();
   (function tick(now) {
-    let p = clamp((now - t0) / 1500);
+    let p = clamp((now - t0) / 600);
     if (!loaded) p = Math.min(p, .9);
     num.textContent = Math.round(p * 100);
     ring.style.strokeDashoffset = 132 * (1 - p);
-    if (p >= 1) setTimeout(start, 250); else requestAnimationFrame(tick);
+    if (p >= 1) setTimeout(start, 100); else requestAnimationFrame(tick);
   })(t0);
 
   addEventListener('resize', () => {
@@ -1777,7 +1782,7 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
       cover.remove();
       root.classList.remove('cover-on');
       dispatchEvent(new Event('cover:done'));
-    }, 1000);
+    }, 700);
   }
   btn.addEventListener('click', enter);
 
