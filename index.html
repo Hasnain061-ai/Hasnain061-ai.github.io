@@ -179,7 +179,7 @@ section { padding: clamp(80px, 11vw, 150px) 0 0; scroll-margin-top: 64px; }
 .sec-head { display: grid; gap: 18px; margin-bottom: clamp(36px, 5vw, 64px); }
 
 /* packs: one card per portal, like boxed products */
-.packs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.packs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .pack {
   position: relative; display: flex; flex-direction: column; min-height: 440px; overflow: hidden;
   border-radius: 22px; padding: 26px; text-decoration: none; isolation: isolate;
@@ -208,6 +208,7 @@ section { padding: clamp(80px, 11vw, 150px) 0 0; scroll-margin-top: 64px; }
 .p-heat { --g: linear-gradient(150deg, #FF5A2A, #B3160C 60%, #4A0A06); --glow: rgba(255,74,28,.8); }
 .p-ocean { --g: linear-gradient(150deg, #2E8BEA, #13489A 60%, #0A1D44); --glow: rgba(46,139,234,.8); }
 .p-twin { --g: linear-gradient(150deg, #F6B53A, #C2700E 60%, #4A2A06); --glow: rgba(246,181,58,.8); }
+.p-drought { --g: linear-gradient(150deg, #8DB547, #4E7A1E 60%, #182A08); --glow: rgba(141,181,71,.8); }
 @media (max-width: 960px) { .packs { grid-template-columns: 1fr; } .pack { min-height: 380px; } .pack .cover { max-width: 520px; } }
 
 /* portal detail */
@@ -642,14 +643,20 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
           <div class="cover"><img src="assets/dt-flood-sector.webp" alt="Flood Digital Twin: the F-8/1 sector of Islamabad during a test flood" loading="lazy"></div>
           <span class="price">Twin cities<small>Islamabad and Rawalpindi</small></span>
         </a>
-        <a class="pack p-heat rv" href="#heatwave" data-agent="card.heatwave">
+        <a class="pack p-drought rv" href="#drought-intelligence" data-agent="card.drought">
           <div class="top"><span>Portal · 02</span><span>Live</span></div>
+          <h3>Drought Intelligence</h3>
+          <div class="cover"><img src="assets/dr-map.webp" alt="Drought Intelligence: drought category by district, February 2018" loading="lazy"></div>
+          <span class="price">153 of 160<small>districts in drought, Feb 2018</small></span>
+        </a>
+        <a class="pack p-heat rv" href="#heatwave" data-agent="card.heatwave">
+          <div class="top"><span>Portal · 03</span><span>Live</span></div>
           <h3>Heatwave Intelligence</h3>
           <div class="cover"><img src="assets/hw-outlook.webp" alt="Heatwave Intelligence: the 7-day heatwave outlook by district" loading="lazy"></div>
           <span class="price">80%<small>heatwave days caught</small></span>
         </a>
         <a class="pack p-ocean rv" href="#ocean-intelligence" data-agent="card.ocean">
-          <div class="top"><span>Portal · 03</span><span>Live</span></div>
+          <div class="top"><span>Portal · 04</span><span>Live</span></div>
           <h3>Ocean Intelligence</h3>
           <div class="cover"><img src="assets/oi-oxygen.webp" alt="Ocean Intelligence: oxygen at the seabed off Pakistan" loading="lazy"></div>
           <span class="price">pH 8.08 → 8.02<small>1985 to 2024</small></span>
@@ -707,11 +714,66 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
         </div>
       </article>
 
+      <!-- Drought -->
+      <article class="portal" id="drought-intelligence">
+        <div class="portal-head rv">
+          <div>
+            <span class="num">PORTAL 02</span>
+            <h3 data-agent="h3.title">Drought <span class="hot">Intelligence</span></h3>
+            <p class="for">A portal for Pakistan</p>
+            <p class="what">Shows how dry each of Pakistan's 160 districts was in every month of the year. It combines rainfall, evaporation, soil moisture, vegetation and land-surface temperature into one drought category per district per month.</p>
+            <p class="stack">Built with Mapbox GL JS, Chart.js and a FastAPI backend, on a Python pipeline (xarray, rasterio, pandas, Google Earth Engine) with PMD, ERA5-Land and MODIS data.</p>
+          </div>
+          <ul class="does" data-agent="ul.features">
+            <li><span class="i">01</span><b>Five indicators, one category</b><span>SPI-3 and SPEI-1 from PMD rainfall and temperature, soil moisture (SMCI) from ERA5-Land, and heat stress and surface dryness (TCI, TVDI) from MODIS, combined into one drought index with five levels, from Normal to Extreme.</span></li>
+            <li><span class="i">02</span><b>160 districts, month by month</b><span>A 12-month time bar for 2018 and 2021, both processed with the same method, with swipe, side-by-side and difference views.</span></li>
+            <li><span class="i">03</span><b>What drove the drought</b><span>For each month, how many districts each indicator flagged, and the most affected districts with the indicators behind each one.</span></li>
+            <li><span class="i">04</span><b>2018 in context</b><span>Pakistan received 25% less rain than normal in 2018 (323 mm against 433 mm), its 4th-driest year of 1980–2024. Sindh was 58% below normal and Balochistan 43%.</span></li>
+            <li><span class="i">05</span><b>An assistant that answers from the data</b><span>Questions in English or Roman Urdu, answered from the drought data and computed locally.</span></li>
+          </ul>
+        </div>
+
+        <figure class="shot big rv" data-agent="img.map">
+          <div class="img"><img src="assets/dr-by-month.webp" width="1914" height="1034" loading="lazy" alt="Drought Intelligence portal: Pakistan's districts coloured by drought category for January 2018, with a stacked bar chart of districts above Normal in each month of 2018."></div>
+          <figcaption>Districts above Normal in 2018, month by month and by drought level: most in January (156), fewest in July (48).</figcaption>
+        </figure>
+        <div class="gallery">
+          <figure class="shot rv">
+            <div class="img"><img src="assets/dr-spi-spei.webp" width="1376" height="747" loading="lazy" alt="Two maps side by side: SPI-3 for January 2018 and SPEI-1 for December 2018, brown where drier than normal."></div>
+            <figcaption>Rainfall indicators side by side: SPI-3 (January 2018) and SPEI-1 (December 2018).</figcaption>
+          </figure>
+          <figure class="shot rv">
+            <div class="img"><img src="assets/dr-indicators.webp" width="1918" height="1037" loading="lazy" alt="A table and line chart of how many districts each indicator flagged as dry in each month of 2018."></div>
+            <figcaption>What drove it: districts flagged by each indicator, month by month.</figcaption>
+          </figure>
+          <figure class="shot rv">
+            <div class="img"><img src="assets/dr-map.webp" width="1920" height="1044" loading="lazy" alt="Pakistan's districts coloured by drought category for February 2018, Severe in Balochistan and Moderate across much of the country, with a 12-month time bar."></div>
+            <figcaption>February 2018: 153 of 160 districts in drought, 16 of them Severe, mostly in Balochistan.</figcaption>
+          </figure>
+          <figure class="shot rv">
+            <div class="img"><img src="assets/dr-top-districts.webp" width="1376" height="747" loading="lazy" alt="List of the most affected districts in February 2018, all in Balochistan and all at Severe drought, with the indicators behind each."></div>
+            <figcaption>The most affected districts in February 2018, all in Balochistan.</figcaption>
+          </figure>
+          <figure class="shot rv">
+            <div class="img"><img src="assets/dr-tvdi-tci.webp" width="1376" height="748" loading="lazy" alt="Two satellite indicator maps side by side: TVDI for January 2018 and TCI for December 2018."></div>
+            <figcaption>Satellite indicators from MODIS: surface dryness (TVDI) and heat stress (TCI).</figcaption>
+          </figure>
+          <figure class="shot rv">
+            <div class="img"><img src="assets/dr-assistant.webp" width="1376" height="744" loading="lazy" alt="The assistant panel answering which districts are on Warning or Alert, with a table of districts and their indicators beside the soil moisture map."></div>
+            <figcaption>The assistant lists the 20 districts on Warning or Alert in January 2018.</figcaption>
+          </figure>
+        </div>
+        <div class="verify rv">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+          <p><b>Checked end to end.</b> An independent script recomputes the whole chain from the published indicators: it passed 35 of 35 checks for 2018 and 34 of 34 for 2021, and it reproduces the scientist's own 2018 workbook.</p>
+        </div>
+      </article>
+
       <!-- Heatwave -->
       <article class="portal" id="heatwave">
         <div class="portal-head rv">
           <div>
-            <span class="num">PORTAL 02</span>
+            <span class="num">PORTAL 03</span>
             <h3 data-agent="h3.title">Heatwave <span class="hot">Intelligence</span></h3>
             <p class="for">A portal for Pakistan</p>
             <p class="what">Shows how heat in Pakistan has changed since 1980, and which districts face a heatwave in the next seven days.</p>
@@ -772,7 +834,7 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
       <article class="portal" id="ocean-intelligence">
         <div class="portal-head rv">
           <div>
-            <span class="num">PORTAL 03</span>
+            <span class="num">PORTAL 04</span>
             <h3 data-agent="h3.title">Ocean <span class="hot">Intelligence</span></h3>
             <p class="for">A portal for Pakistan</p>
             <p class="what">Shows how acidity, heat and oxygen in Pakistan's seas have changed since the 1980s, and where they are heading by 2050.</p>
@@ -845,7 +907,6 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
       <h3 class="more-h rv">More Geo-AI projects</h3>
       <ul class="more rv" data-agent="ul.projects">
         <li>Flood Inundation Monitoring portal, with an AI agent</li>
-        <li>Drought Monitoring portal, with an AI agent</li>
         <li>Crop Water Requirement portal</li>
         <li>Coastal Hazard portal</li>
         <li>Real-estate site selection with machine learning</li>
@@ -1478,7 +1539,7 @@ dialog#lb button { position: fixed; right: 18px; top: 14px; width: 42px; height:
 
   // a short pass over the main sections; the rest is revealed at once when the build ends
   const STOPS = [
-    '#work .sec-head', '#digital-twin .portal-head', '#heatwave .portal-head',
+    '#work .sec-head', '#digital-twin .portal-head', '#drought-intelligence .portal-head', '#heatwave .portal-head',
     '#ocean-intelligence .portal-head', '#contact',
   ].map(s => document.querySelector(s)).filter(Boolean);
 
